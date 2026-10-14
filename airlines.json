@@ -1,0 +1,498 @@
+{
+  "meta": {
+    "last_updated": "2025-10-01",
+    "updated_by": "manual"
+  },
+  "airlines": [
+    {
+      "name": "Aer Lingus",
+      "aliases": ["aer lingus", "aerlingus", "ei"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 24, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.aerlingus.com/travel-information/baggage-information/cabin-baggage/"
+    },
+    {
+      "name": "Aegean Airlines",
+      "aliases": ["aegean", "aegean airlines", "a3"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://en.aegeanair.com/travel-information/baggage/cabin-baggage/"
+    },
+    {
+      "name": "Air Asia",
+      "aliases": ["airasia", "air asia", "ak"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.airasia.com/baggage"
+    },
+    {
+      "name": "Air Canada",
+      "aliases": ["air canada", "ac"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.aircanada.com/ca/en/aco/home/plan/baggage/carry-on.html"
+    },
+    {
+      "name": "Air China",
+      "aliases": ["air china", "ca"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 5 },
+      "note": "",
+      "source_url": "https://www.airchina.com.cn/en/travel-preparation/baggage/carry-on-baggage.shtml"
+    },
+    {
+      "name": "Air France",
+      "aliases": ["air france", "af"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 12 },
+      "note": "",
+      "source_url": "https://www.airfrance.com/FR/en/common/guidevoyageur/pratique/bagages-cabine-background.htm"
+    },
+    {
+      "name": "Air India",
+      "aliases": ["air india", "ai"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.airindia.com/in/en/manage/baggage/cabin-baggage.html"
+    },
+    {
+      "name": "Air New Zealand",
+      "aliases": ["air new zealand", "air nz", "anz", "nz"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.airnewzealand.co.nz/carry-on-baggage"
+    },
+    {
+      "name": "Alaska Airlines",
+      "aliases": ["alaska", "alaska airlines", "as"],
+      "cabin_bag": { "length_cm": 61, "width_cm": 43, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.alaskaair.com/content/travel-info/baggage/carry-on-baggage"
+    },
+    {
+      "name": "Allegiant Air",
+      "aliases": ["allegiant", "allegiant air", "g4"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 18 },
+      "note": "No free carry-on on base fares — only a personal item is free.",
+      "source_url": "https://www.allegiantair.com/baggage-information"
+    },
+    {
+      "name": "American Airlines",
+      "aliases": ["american", "american airlines", "aa"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 23 },
+      "note": "",
+      "source_url": "https://www.aa.com/i18n/travel-info/baggage/carry-on-baggage.jsp"
+    },
+    {
+      "name": "Austrian Airlines",
+      "aliases": ["austrian", "austrian airlines", "os"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.austrian.com/at/en/carry-on-baggage"
+    },
+    {
+      "name": "Avianca",
+      "aliases": ["avianca", "av"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.avianca.com/en/travel-info/baggage/carry-on-baggage/"
+    },
+    {
+      "name": "Azul",
+      "aliases": ["azul", "azul brazilian", "ad"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.voeazul.com.br/en/travel-information/baggage"
+    },
+    {
+      "name": "British Airways",
+      "aliases": ["british airways", "ba", "british"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 23 },
+      "note": "",
+      "source_url": "https://www.britishairways.com/en-gb/information/baggage-essentials/hand-baggage-allowances"
+    },
+    {
+      "name": "Brussels Airlines",
+      "aliases": ["brussels airlines", "brussels", "sn"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.brusselsairlines.com/gb/en/plan-and-book/baggage/hand-baggage"
+    },
+    {
+      "name": "Cathay Pacific",
+      "aliases": ["cathay pacific", "cathay", "cx"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.cathaypacific.com/cx/en_HK/manage-booking/baggage/carry-on-baggage.html"
+    },
+    {
+      "name": "Cebu Pacific",
+      "aliases": ["cebu pacific", "cebu", "5j"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.cebupacificair.com/pages/plan/baggage-information"
+    },
+    {
+      "name": "China Eastern",
+      "aliases": ["china eastern", "mu"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 5 },
+      "note": "",
+      "source_url": "https://www.ceair.com/en/Baggage.html"
+    },
+    {
+      "name": "China Southern",
+      "aliases": ["china southern", "cz"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 5 },
+      "note": "",
+      "source_url": "https://www.csair.com/en/tourguide/luggage_service/carry-on_baggage/"
+    },
+    {
+      "name": "Copa Airlines",
+      "aliases": ["copa", "copa airlines", "cm"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.copaair.com/en-gs/travel-information/baggage-information/"
+    },
+    {
+      "name": "Delta",
+      "aliases": ["delta", "delta airlines", "dl"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 35, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.delta.com/us/en/baggage/carry-on-baggage"
+    },
+    {
+      "name": "EasyJet",
+      "aliases": ["easyjet", "u2"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 15 },
+      "note": "Free carry-on is a small under-seat bag (45×36×20 cm). The large 56×45×25 bag requires an Up Front or Extra Legroom seat or a hands-free add-on.",
+      "source_url": "https://www.easyjet.com/en/help/baggage/cabin-bag-and-hold-luggage"
+    },
+    {
+      "name": "El Al",
+      "aliases": ["el al", "elal", "ly"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.elal.com/en/passenegers-info/baggage/hand-baggage/"
+    },
+    {
+      "name": "Emirates",
+      "aliases": ["emirates", "ek"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 38, "height_cm": 20, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.emirates.com/english/before-you-fly/baggage/cabin-baggage-rules/"
+    },
+    {
+      "name": "Ethiopian Airlines",
+      "aliases": ["ethiopian", "ethiopian airlines", "et"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.ethiopianairlines.com/aa/information/baggage-information/carry-on-baggage"
+    },
+    {
+      "name": "Etihad",
+      "aliases": ["etihad", "ey"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.etihad.com/en/fly-etihad/baggage/cabin-baggage"
+    },
+    {
+      "name": "EVA Air",
+      "aliases": ["eva air", "eva", "br"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.evaair.com/en-global/fly-prepare/baggage/carry-on-baggage/"
+    },
+    {
+      "name": "Finnair",
+      "aliases": ["finnair", "ay"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.finnair.com/en/information-services/baggage/carry-on-baggage"
+    },
+    {
+      "name": "Frontier Airlines",
+      "aliases": ["frontier", "frontier airlines", "f9"],
+      "cabin_bag": { "length_cm": 61, "width_cm": 41, "height_cm": 25, "weight_kg": 16 },
+      "note": "No free carry-on on base fares — only a personal item (45×33×20 cm) is free.",
+      "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/"
+    },
+    {
+      "name": "GoAir (Go First)",
+      "aliases": ["goair", "go first", "go air", "g8"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 20, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.flygofirst.com/baggage"
+    },
+    {
+      "name": "Hawaiian Airlines",
+      "aliases": ["hawaiian", "hawaiian airlines", "ha"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 11 },
+      "note": "",
+      "source_url": "https://www.hawaiianairlines.com/legal/carry-on-baggage"
+    },
+    {
+      "name": "Iberia",
+      "aliases": ["iberia", "ib"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 40, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.iberia.com/gb/luggage/hand-luggage/"
+    },
+    {
+      "name": "Icelandair",
+      "aliases": ["icelandair", "fi"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.icelandair.com/support/baggage/carry-on-baggage/"
+    },
+    {
+      "name": "IndiGo",
+      "aliases": ["indigo", "6e"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.goindigo.in/baggage/cabin-baggage.html"
+    },
+    {
+      "name": "Japan Airlines",
+      "aliases": ["japan airlines", "jal", "jl"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.jal.co.jp/en/inter/baggage/hand/"
+    },
+    {
+      "name": "JetBlue",
+      "aliases": ["jetblue", "jet blue", "b6"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 18 },
+      "note": "",
+      "source_url": "https://www.jetblue.com/help/carry-on-bags"
+    },
+    {
+      "name": "KLM",
+      "aliases": ["klm", "kl"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 12 },
+      "note": "",
+      "source_url": "https://www.klm.com/information/baggage/hand-baggage"
+    },
+    {
+      "name": "Korean Air",
+      "aliases": ["korean air", "korean", "ke"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.koreanair.com/global/en/fly/baggage/carry-on.html"
+    },
+    {
+      "name": "LATAM Airlines",
+      "aliases": ["latam", "latam airlines", "la"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.latamairlines.com/us/en/travel-information/baggage/carry-on-baggage"
+    },
+    {
+      "name": "Lion Air",
+      "aliases": ["lion air", "jt"],
+      "cabin_bag": { "length_cm": 40, "width_cm": 30, "height_cm": 20, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.lionair.co.id/en/lion-experience/baggage"
+    },
+    {
+      "name": "LOT Polish Airlines",
+      "aliases": ["lot", "lot polish", "lo"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.lot.com/gb/en/carry-on-baggage"
+    },
+    {
+      "name": "Lufthansa",
+      "aliases": ["lufthansa", "lh"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.lufthansa.com/xx/en/carry-on-baggage"
+    },
+    {
+      "name": "Malaysia Airlines",
+      "aliases": ["malaysia airlines", "malaysia", "mh"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.malaysiaairlines.com/hq/en/plan/baggage/cabin-baggage.html"
+    },
+    {
+      "name": "Norwegian",
+      "aliases": ["norwegian", "dy"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.norwegian.com/en/travel-info/baggage/hand-baggage/"
+    },
+    {
+      "name": "Pegasus Airlines",
+      "aliases": ["pegasus", "pc"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.flypgs.com/en/travel-info/fly-info/baggage/hand-luggage"
+    },
+    {
+      "name": "Philippine Airlines",
+      "aliases": ["philippine airlines", "philippine", "pal", "pr"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.philippineairlines.com/en/travelinfo/baggage/carryon"
+    },
+    {
+      "name": "Qantas",
+      "aliases": ["qantas", "qf"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.qantas.com/au/en/travel-info/luggage/carry-on-baggage.html"
+    },
+    {
+      "name": "Qatar Airways",
+      "aliases": ["qatar", "qatar airways", "qr"],
+      "cabin_bag": { "length_cm": 50, "width_cm": 37, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.qatarairways.com/en/baggage/allowance.html"
+    },
+    {
+      "name": "Ryanair",
+      "aliases": ["ryanair", "fr"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 10 },
+      "note": "Free carry-on is a small personal bag (40×20×25 cm). The 55×40×20 bag requires Priority & 2 Cabin Bags.",
+      "source_url": "https://www.ryanair.com/gb/en/useful-info/help-centre/faq-overview/baggage"
+    },
+    {
+      "name": "SAS Scandinavian",
+      "aliases": ["sas", "scandinavian", "sk"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.flysas.com/en/travel-info/baggage/hand-baggage/"
+    },
+    {
+      "name": "Scoot",
+      "aliases": ["scoot", "tr"],
+      "cabin_bag": { "length_cm": 54, "width_cm": 38, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.flyscoot.com/en/plan/baggage"
+    },
+    {
+      "name": "Singapore Airlines",
+      "aliases": ["singapore airlines", "singapore", "sia", "sq"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.singaporeair.com/en_UK/travel-info/baggage/cabin-baggage/"
+    },
+    {
+      "name": "Southwest Airlines",
+      "aliases": ["southwest", "southwest airlines", "wn"],
+      "cabin_bag": { "length_cm": 61, "width_cm": 41, "height_cm": 25, "weight_kg": 16 },
+      "note": "",
+      "source_url": "https://www.southwest.com/help/baggage"
+    },
+    {
+      "name": "SpiceJet",
+      "aliases": ["spicejet", "sg"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.spicejet.com/baggage.aspx"
+    },
+    {
+      "name": "Spirit Airlines",
+      "aliases": ["spirit", "spirit airlines", "nk"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 46, "height_cm": 25, "weight_kg": 18 },
+      "note": "No free carry-on on base fares — only a personal item (45×35×20 cm) is free.",
+      "source_url": "https://www.spirit.com/optional-services"
+    },
+    {
+      "name": "SriLankan Airlines",
+      "aliases": ["srilankan", "srilankan airlines", "ul"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 35, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.srilankan.com/en_uk/plan-and-book/luggage"
+    },
+    {
+      "name": "Swiss International",
+      "aliases": ["swiss", "swiss international", "lx"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.swiss.com/ch/en/prepare/baggage/hand-baggage"
+    },
+    {
+      "name": "TAP Air Portugal",
+      "aliases": ["tap", "tap portugal", "tp"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.flytap.com/en-pt/baggage/hand-baggage"
+    },
+    {
+      "name": "Thai AirAsia",
+      "aliases": ["thai airasia", "fd"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.airasia.com/baggage"
+    },
+    {
+      "name": "Thai Airways",
+      "aliases": ["thai airways", "thai", "tg"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 45, "height_cm": 25, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.thaiairways.com/en_TH/travel_information/baggage_information/carry_on.page"
+    },
+    {
+      "name": "Turkish Airlines",
+      "aliases": ["turkish airlines", "turkish", "tk"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 23, "weight_kg": 8 },
+      "note": "",
+      "source_url": "https://www.turkishairlines.com/en-int/any-questions/carry-on-baggage/"
+    },
+    {
+      "name": "United Airlines",
+      "aliases": ["united", "united airlines", "ua"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 35, "height_cm": 22, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.united.com/en/us/fly/travel/baggage/carry-on.html"
+    },
+    {
+      "name": "Vietnam Airlines",
+      "aliases": ["vietnam airlines", "vietnam", "vn"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 7 },
+      "note": "",
+      "source_url": "https://www.vietnamairlines.com/vn/en/travel-information/baggage/carry-on-baggage"
+    },
+    {
+      "name": "Virgin Atlantic",
+      "aliases": ["virgin atlantic", "virgin", "vs"],
+      "cabin_bag": { "length_cm": 56, "width_cm": 36, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.virginatlantic.com/us/en/travel-information/baggage-allowances/hand-baggage.html"
+    },
+    {
+      "name": "Vistara",
+      "aliases": ["vistara", "uk"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 7 },
+      "note": "Merged with Air India. Check Air India limits for flights after November 2024.",
+      "source_url": "https://www.airindia.com/in/en/manage/baggage/cabin-baggage.html"
+    },
+    {
+      "name": "Volaris",
+      "aliases": ["volaris", "y4"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 25, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.volaris.com/en/travel-info/baggage"
+    },
+    {
+      "name": "Vueling",
+      "aliases": ["vueling", "vy"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 10 },
+      "note": "Free carry-on is a small personal bag (40×20×30 cm). The 55×40×20 bag requires a fare or add-on that includes overhead cabin bag.",
+      "source_url": "https://www.vueling.com/en/vueling-services/luggage/hand-luggage"
+    },
+    {
+      "name": "WestJet",
+      "aliases": ["westjet", "ws"],
+      "cabin_bag": { "length_cm": 53, "width_cm": 38, "height_cm": 23, "weight_kg": 10 },
+      "note": "",
+      "source_url": "https://www.westjet.com/en-ca/travel-info/baggage/carry-on"
+    },
+    {
+      "name": "Wizz Air",
+      "aliases": ["wizzair", "wizz air", "wizz", "w6"],
+      "cabin_bag": { "length_cm": 55, "width_cm": 40, "height_cm": 20, "weight_kg": 10 },
+      "note": "Free carry-on is a small personal bag (40×30×20 cm). The 55×40×20 bag requires WIZZ Priority.",
+      "source_url": "https://wizzair.com/en-gb/information-and-services/travel-information/baggage#background"
+    }
+  ]
+}

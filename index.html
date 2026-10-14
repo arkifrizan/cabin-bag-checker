@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabin Bag Checker</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f8f9fa;--card:#fff;--accent:#2563eb;--green:#16a34a;--red:#dc2626;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--radius:12px}
+  html{font-size:16px;-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem 3rem}
+
+  h1{font-size:1.65rem;font-weight:700;text-align:center;margin-bottom:.35rem;letter-spacing:-.02em}
+  .tagline{font-size:.95rem;color:var(--muted);text-align:center;max-width:38ch;line-height:1.5;margin-bottom:1.8rem}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:420px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+  label{display:block;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:.4rem}
+  .field{margin-bottom:1.1rem;position:relative}
+
+  .dims{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.4rem;align-items:center}
+  .dims span{text-align:center;font-weight:600;color:var(--muted);font-size:1rem}
+  input[type="number"],input[type="text"]{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.65rem .75rem;font-size:1rem;color:var(--text);background:#fff;transition:border-color .15s}
+  input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+  input[type="number"]{text-align:center;padding:.65rem .35rem;-moz-appearance:textfield}
+  input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none}
+
+  .unit-toggle{display:flex;gap:0;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:1.1rem;width:fit-content}
+  .unit-toggle button{border:none;background:transparent;padding:.4rem .9rem;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s}
+  .unit-toggle button.active{background:var(--accent);color:#fff}
+
+  .suggestions{position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--border);border-top:none;border-radius:0 0 8px 8px;max-height:180px;overflow-y:auto;z-index:10;display:none}
+  .suggestions.open{display:block}
+  .suggestions div{padding:.6rem .75rem;cursor:pointer;font-size:.92rem;border-bottom:1px solid var(--border)}
+  .suggestions div:last-child{border-bottom:none}
+  .suggestions div:hover,.suggestions div.highlighted{background:#eef2ff}
+  .suggestions div .alias{color:var(--muted);font-size:.8rem;margin-left:.3rem}
+
+  button.check{width:100%;border:none;background:var(--accent);color:#fff;font-size:1rem;font-weight:600;padding:.8rem;border-radius:8px;cursor:pointer;transition:background .15s;margin-top:.3rem}
+  button.check:hover{background:#1d4ed8}
+  button.check:active{transform:scale(.985)}
+
+  .result{margin-top:1.3rem;padding:1.2rem;border-radius:var(--radius);display:none;line-height:1.6}
+  .result.show{display:block}
+  .result.pass{background:#f0fdf4;border:1.5px solid #bbf7d0}
+  .result.fail{background:#fef2f2;border:1.5px solid #fecaca}
+  .result.unknown{background:#fffbeb;border:1.5px solid #fde68a}
+
+  .verdict{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+  .result.pass .verdict{color:var(--green)}
+  .result.fail .verdict{color:var(--red)}
+  .result.unknown .verdict{color:#b45309}
+
+  .detail{font-size:.92rem;color:var(--text)}
+  .detail p{margin-bottom:.35rem}
+  .detail strong{font-weight:600}
+
+  .tip{margin-top:.35rem;font-size:.82rem;color:var(--muted);font-style:italic}
+
+  footer{margin-top:2.5rem;font-size:.78rem;color:var(--muted);text-align:center;max-width:420px;line-height:1.5}
+
+  @media(max-width:400px){
+    body{padding:1.2rem .75rem 2rem}
+    h1{font-size:1.4rem}
+    .card{padding:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<h1>✈️ Cabin Bag Checker</h1>
+<p class="tagline">This site is for travellers who want to know, before they get to the gate, whether their bag will fit in the cabin — type your bag size and airline and get a plain yes-or-no answer in one second.</p>
+
+<div class="card">
+  <div class="unit-toggle" role="radiogroup" aria-label="Unit">
+    <button class="active" data-unit="cm" onclick="setUnit('cm')">cm</button>
+    <button data-unit="in" onclick="setUnit('in')">inches</button>
+  </div>
+
+  <div class="field">
+    <label>Bag size (<span id="unitLabel">cm</span>)</label>
+    <div class="dims">
+      <input type="number" id="len" placeholder="L" min="1" max="200" aria-label="Length" inputmode="decimal">
+      <span>×</span>
+      <input type="number" id="wid" placeholder="W" min="1" max="200" aria-label="Width" inputmode="decimal">
+      <span>×</span>
+      <input type="number" id="hei" placeholder="H" min="1" max="200" aria-label="Height" inputmode="decimal">
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Airline</label>
+    <input type="text" id="airline" placeholder="e.g. Ryanair, Delta, IndiGo…" autocomplete="off" aria-autocomplete="list">
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+
+  <button class="check" onclick="check()">Check my bag</button>
+</div>
+
+<div class="result" id="result">
+  <div class="verdict" id="verdict"></div>
+  <div class="detail" id="detail"></div>
+</div>
+
+<footer>
+  Baggage rules shown here are based on each airline's publicly listed cabin baggage policy as of 2025. Airlines may change limits at any time — always double-check on the airline's own website before you fly.
+</footer>
+
+<script>
+// ── Airline cabin baggage database (cm) ──
+// Each entry: [displayName, lengthCm, widthCm, heightCm, weightKg, note, aliases[]]
+const AIRLINES = [
+  ["Aer Lingus",          55, 40, 24,  10, "", ["aer lingus","aerlingus"]],
+  ["Aegean Airlines",     56, 45, 25,   8, "", ["aegean","aegean airlines"]],
+  ["Air Asia",            56, 36, 23,   7, "", ["airasia","air asia"]],
+  ["Air Canada",          55, 40, 23,  10, "", ["air canada","ac"]],
+  ["Air China",           55, 40, 20,   5, "", ["air china","ca"]],
+  ["Air France",          55, 35, 25,  12, "", ["air france","af"]],
+  ["Air India",           55, 40, 20,   8, "", ["air india","ai"]],
+  ["Air New Zealand",     56, 36, 23,   7, "", ["air new zealand","air nz","anz"]],
+  ["Alaska Airlines",     61, 43, 25,  10, "", ["alaska","alaska airlines","as"]],
+  ["Allegiant Air",       56, 36, 23,  18, "No free carry-on on base fares — only a personal item is free.", ["allegiant","allegiant air"]],
+  ["American Airlines",   56, 36, 23,  23, "", ["american","american airlines","aa"]],
+  ["Austrian Airlines",   55, 40, 23,   8, "", ["austrian","austrian airlines","os"]],
+  ["Avianca",             55, 40, 25,  10, "", ["avianca"]],
+  ["Azul",                55, 35, 25,  10, "", ["azul","azul brazilian"]],
+  ["British Airways",     56, 45, 25,  23, "", ["british airways","ba","british"]],
+  ["Brussels Airlines",   55, 40, 23,   8, "", ["brussels airlines","brussels","sn"]],
+  ["Cathay Pacific",      56, 36, 23,   7, "", ["cathay pacific","cathay","cx"]],
+  ["Cebu Pacific",        56, 36, 23,   7, "", ["cebu pacific","cebu"]],
+  ["China Eastern",       56, 45, 25,   5, "", ["china eastern","mu"]],
+  ["China Southern",      56, 45, 25,   5, "", ["china southern","cz"]],
+  ["Copa Airlines",       56, 36, 25,  10, "", ["copa","copa airlines"]],
+  ["Delta",               56, 35, 23,  10, "", ["delta","delta airlines","dl"]],
+  ["EasyJet",             56, 45, 25,  15, "Free carry-on is a small under-seat bag (45×36×20 cm). The large 56×45×25 bag requires an Up Front or Extra Legroom seat or a hands-free add-on.", ["easyjet"]],
+  ["El Al",               56, 45, 25,   8, "", ["el al","elal","ly"]],
+  ["Emirates",            55, 38, 20,   7, "", ["emirates","ek"]],
+  ["Ethiopian Airlines",  55, 35, 25,   7, "", ["ethiopian","ethiopian airlines","et"]],
+  ["Etihad",              56, 36, 23,   7, "", ["etihad","ey"]],
+  ["EVA Air",             56, 36, 23,   7, "", ["eva air","eva","br"]],
+  ["Finnair",             56, 45, 25,   8, "", ["finnair","ay"]],
+  ["Frontier Airlines",   61, 41, 25,  16, "No free carry-on on base fares — only a personal item (45×33×20 cm) is free.", ["frontier","frontier airlines","f9"]],
+  ["GoAir (Go First)",    55, 35, 20,   7, "", ["goair","go first","go air"]],
+  ["Hawaiian Airlines",   56, 36, 23,  11, "", ["hawaiian","hawaiian airlines","ha"]],
+  ["Iberia",              56, 40, 25,  10, "", ["iberia","ib"]],
+  ["Icelandair",          55, 40, 20,  10, "", ["icelandair","fi"]],
+  ["IndiGo",              55, 35, 25,   7, "", ["indigo","6e"]],
+  ["Japan Airlines",      55, 40, 25,  10, "", ["japan airlines","jal","jl"]],
+  ["JetBlue",             56, 36, 23,  18, "", ["jetblue","jet blue","b6"]],
+  ["KLM",                 55, 35, 25,  12, "", ["klm","kl"]],
+  ["Korean Air",          55, 40, 20,  10, "", ["korean air","korean","ke"]],
+  ["LATAM Airlines",      55, 35, 25,  10, "", ["latam","latam airlines"]],
+  ["Lion Air",            40, 30, 20,   7, "", ["lion air"]],
+  ["LOT Polish Airlines", 55, 40, 23,   8, "", ["lot","lot polish","lo"]],
+  ["Lufthansa",           55, 40, 23,   8, "", ["lufthansa","lh"]],
+  ["Malaysia Airlines",   56, 36, 23,   7, "", ["malaysia airlines","malaysia","mh"]],
+  ["Norwegian",           55, 40, 23,  10, "", ["norwegian","dy"]],
+  ["Pegasus Airlines",    55, 40, 20,   8, "", ["pegasus","pc"]],
+  ["Philippine Airlines", 56, 36, 23,   7, "", ["philippine airlines","philippine","pal","pr"]],
+  ["Qantas",              56, 36, 23,   7, "", ["qantas","qf"]],
+  ["Qatar Airways",       50, 37, 25,   7, "", ["qatar","qatar airways","qr"]],
+  ["Ryanair",             55, 40, 20,  10, "Free carry-on is a small personal bag (40×20×25 cm). The 55×40×20 bag requires Priority & 2 Cabin Bags.", ["ryanair","fr"]],
+  ["SAS Scandinavian",    55, 40, 23,   8, "", ["sas","scandinavian","sk"]],
+  ["Scoot",               54, 38, 23,  10, "", ["scoot","tr"]],
+  ["Singapore Airlines",  55, 36, 23,   7, "", ["singapore airlines","singapore","sia","sq"]],
+  ["Southwest Airlines",  61, 41, 25,  16, "", ["southwest","southwest airlines","wn"]],
+  ["SpiceJet",            55, 35, 25,   7, "", ["spicejet"]],
+  ["Spirit Airlines",     56, 46, 25,  18, "No free carry-on on base fares — only a personal item (45×35×20 cm) is free.", ["spirit","spirit airlines","nk"]],
+  ["SriLankan Airlines",  55, 35, 25,   7, "", ["srilankan","srilankan airlines","ul"]],
+  ["Swiss International", 55, 40, 23,   8, "", ["swiss","swiss international","lx"]],
+  ["TAP Air Portugal",    55, 40, 20,   8, "", ["tap","tap portugal","tp"]],
+  ["Thai AirAsia",        56, 36, 23,   7, "", ["thai airasia"]],
+  ["Thai Airways",        56, 45, 25,   7, "", ["thai airways","thai","tg"]],
+  ["Turkish Airlines",    55, 40, 23,   8, "", ["turkish airlines","turkish","tk"]],
+  ["United Airlines",     56, 35, 22,  10, "", ["united","united airlines","ua"]],
+  ["Vietnam Airlines",    56, 36, 23,   7, "", ["vietnam airlines","vietnam","vn"]],
+  ["Virgin Atlantic",     56, 36, 23,  10, "", ["virgin atlantic","virgin","vs"]],
+  ["Vistara",             55, 40, 20,   7, "Merged with Air India. Check Air India limits for flights after November 2024.", ["vistara","uk"]],
+  ["Volaris",             55, 40, 25,  10, "", ["volaris","y4"]],
+  ["Vueling",             55, 40, 20,  10, "Free carry-on is a small personal bag (40×20×30 cm). The 55×40×20 bag requires a fare or add-on that includes overhead cabin bag.", ["vueling","vy"]],
+  ["WestJet",             53, 38, 23,  10, "", ["westjet","ws"]],
+  ["Wizz Air",            55, 40, 20,  10, "Free carry-on is a small personal bag (40×30×20 cm). The 55×40×20 bag requires WIZZ Priority.", ["wizzair","wizz air","wizz","w6"]],
+];
+
+let unit = "cm";
+
+function setUnit(u) {
+  unit = u;
+  document.querySelectorAll(".unit-toggle button").forEach(b => b.classList.toggle("active", b.dataset.unit === u));
+  document.getElementById("unitLabel").textContent = u === "cm" ? "cm" : "inches";
+  // Clear old values
+  ["len","wid","hei"].forEach(id => { document.getElementById(id).value = ""; });
+  hideResult();
+}
+
+function toCm(v) { return unit === "in" ? v * 2.54 : v; }
+function toDisplay(cm) { return unit === "in" ? (cm / 2.54).toFixed(1) : cm; }
+function unitSuffix() { return unit === "in" ? "in" : "cm"; }
+
+// ── Autocomplete ──
+const airlineInput = document.getElementById("airline");
+const sugBox = document.getElementById("suggestions");
+let highlightIdx = -1;
+let filtered = [];
+
+airlineInput.addEventListener("input", () => {
+  const q = airlineInput.value.trim().toLowerCase();
+  sugBox.innerHTML = "";
+  highlightIdx = -1;
+  if (q.length < 1) { sugBox.classList.remove("open"); return; }
+  filtered = AIRLINES.filter(a => {
+    if (a[0].toLowerCase().includes(q)) return true;
+    return a[6].some(al => al.includes(q));
+  }).slice(0, 8);
+  if (!filtered.length) { sugBox.classList.remove("open"); return; }
+  filtered.forEach((a, i) => {
+    const d = document.createElement("div");
+    d.textContent = a[0];
+    d.addEventListener("mousedown", e => { e.preventDefault(); pickAirline(a[0]); });
+    sugBox.appendChild(d);
+  });
+  sugBox.classList.add("open");
+});
+
+airlineInput.addEventListener("keydown", e => {
+  const items = sugBox.querySelectorAll("div");
+  if (!items.length) return;
+  if (e.key === "ArrowDown") { e.preventDefault(); highlightIdx = Math.min(highlightIdx + 1, items.length - 1); updateHighlight(items); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); highlightIdx = Math.max(highlightIdx - 1, 0); updateHighlight(items); }
+  else if (e.key === "Enter" && highlightIdx >= 0) { e.preventDefault(); pickAirline(filtered[highlightIdx][0]); }
+});
+function updateHighlight(items) { items.forEach((it, i) => it.classList.toggle("highlighted", i === highlightIdx)); }
+function pickAirline(name) { airlineInput.value = name; sugBox.classList.remove("open"); sugBox.innerHTML = ""; }
+airlineInput.addEventListener("blur", () => { setTimeout(() => { sugBox.classList.remove("open"); }, 120); });
+
+// ── Check ──
+function findAirline(q) {
+  q = q.trim().toLowerCase();
+  return AIRLINES.find(a => a[0].toLowerCase() === q || a[6].includes(q));
+}
+
+function hideResult() { document.getElementById("result").classList.remove("show","pass","fail","unknown"); }
+
+function check() {
+  const l = parseFloat(document.getElementById("len").value);
+  const w = parseFloat(document.getElementById("wid").value);
+  const h = parseFloat(document.getElementById("hei").value);
+  const q = airlineInput.value;
+  const res = document.getElementById("result");
+  const verdict = document.getElementById("verdict");
+  const detail = document.getElementById("detail");
+
+  res.classList.remove("show","pass","fail","unknown");
+
+  if (!q.trim()) { flash("airline"); return; }
+
+  const airline = findAirline(q);
+  if (!airline) {
+    res.className = "result show unknown";
+    verdict.textContent = "⚠ Airline not found";
+    detail.innerHTML = `<p>We don't have data for "${esc(q.trim())}". Try the full airline name or check the airline's website directly.</p>`;
+    return;
+  }
+
+  if (isNaN(l) || isNaN(w) || isNaN(h) || l <= 0 || w <= 0 || h <= 0) {
+    flash("len"); return;
+  }
+
+  const [name, maxL, maxW, maxH, maxKg, note] = airline;
+  const bagL = toCm(l), bagW = toCm(w), bagH = toCm(h);
+
+  // Sort both bag and limit dims so orientation doesn't matter
+  const bag = [bagL, bagW, bagH].sort((a, b) => b - a);
+  const limit = [maxL, maxW, maxH].sort((a, b) => b - a);
+  const fits = bag[0] <= limit[0] && bag[1] <= limit[1] && bag[2] <= limit[2];
+
+  const limitStr = `${toDisplay(maxL)} × ${toDisplay(maxW)} × ${toDisplay(maxH)} ${unitSuffix()}`;
+  const weightStr = `${maxKg} kg`;
+
+  if (fits) {
+    res.className = "result show pass";
+    verdict.textContent = "✅ Your bag fits!";
+    detail.innerHTML =
+      `<p>Your bag (${l} × ${w} × ${h} ${unitSuffix()}) is within <strong>${esc(name)}</strong>'s cabin baggage limit.</p>` +
+      `<p><strong>Max allowed size:</strong> ${limitStr}</p>` +
+      `<p><strong>Max weight:</strong> ${weightStr}</p>` +
+      (note ? `<p class="tip">${esc(note)}</p>` : "");
+  } else {
+    // Which dimensions are over?
+    const overParts = [];
+    if (bag[0] > limit[0]) overParts.push("one side is too long");
+    if (bag[1] > limit[1]) overParts.push("one side is too wide");
+    if (bag[2] > limit[2]) overParts.push("one side is too deep");
+    const overMsg = overParts.length ? overParts.join(", and ") + "." : "it exceeds the allowed dimensions.";
+
+    res.className = "result show fail";
+    verdict.textContent = "❌ Too big for the cabin";
+    detail.innerHTML =
+      `<p>Your bag (${l} × ${w} × ${h} ${unitSuffix()}) does not fit — ${overMsg}</p>` +
+      `<p><strong>Max allowed size for ${esc(name)}:</strong> ${limitStr}</p>` +
+      `<p><strong>Max weight:</strong> ${weightStr}</p>` +
+      `<p class="tip">You may need to check this bag or swap it for a smaller one.</p>` +
+      (note ? `<p class="tip">${esc(note)}</p>` : "");
+  }
+}
+
+function esc(s) { const d = document.createElement("span"); d.textContent = s; return d.innerHTML; }
+
+function flash(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = "var(--red)";
+  el.focus();
+  setTimeout(() => { el.style.borderColor = ""; }, 1200);
+}
+
+// Enter key fires check
+document.querySelectorAll("input").forEach(inp => {
+  inp.addEventListener("keydown", e => {
+    if (e.key === "Enter" && !(sugBox.classList.contains("open") && highlightIdx >= 0)) check();
+  });
+});
+</script>
+</body>
+</html>
